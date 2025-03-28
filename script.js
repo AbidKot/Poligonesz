@@ -6,20 +6,23 @@ function generateForm1Question() {
     const x1 = getRandomInt(1, 10);
     const x2 = getRandomInt(1, 10);
     const operation = ["+", "-", "*"][getRandomInt(0, 2)];
-    let question, answer;
+    let question, answer, explanation;
 
     if (operation === "+") {
         question = `Simplify: ${x1}x + ${x2}x`;
         answer = `${x1 + x2}x`;
+        explanation = `Combine like terms: ${x1}x + ${x2}x = (${x1} + ${x2})x = ${answer}`;
     } else if (operation === "-") {
         question = `Simplify: ${x1}x - ${x2}x`;
         answer = `${x1 - x2}x`;
+        explanation = `Combine like terms: ${x1}x - ${x2}x = (${x1} - ${x2})x = ${answer}`;
     } else {
         question = `Expand: ${x1}(x + ${x2})`;
         answer = `${x1}x + ${x1 * x2}`;
+        explanation = `Distribute the ${x1} to both terms inside the parentheses: ${x1} * x + ${x1} * ${x2} = ${answer}`;
     }
 
-    return { question, answer };
+    return { question, answer, explanation };
 }
 
 function generateForm2Question() {
@@ -28,7 +31,15 @@ function generateForm2Question() {
     const c = getRandomInt(1, 5);
     const question = `Expand: (${a}x + ${b})(${c}x - ${b})`;
     const answer = `${a * c}x² ${a * -b + b * c > 0 ? "+" : "-"} ${Math.abs(a * -b + b * c)}x - ${b * b}`;
-    return { question, answer };
+    const explanation = `
+        Use FOIL (First, Outer, Inner, Last) to expand:<br>
+        - First: ${a}x * ${c}x = ${a * c}x²<br>
+        - Outer: ${a}x * -${b} = -${a * b}x<br>
+        - Inner: ${b} * ${c}x = ${b * c}x<br>
+        - Last: ${b} * -${b} = -${b * b}<br>
+        Combine like terms: ${answer}
+    `;
+    return { question, answer, explanation };
 }
 
 function generateForm3Question() {
@@ -37,7 +48,11 @@ function generateForm3Question() {
     const c = getRandomInt(1, 5);
     const question = `Solve the inequality: ${a}x - ${b} > ${c}`;
     const answer = `x > ${(c + b) / a}`;
-    return { question, answer };
+    const explanation = `
+        Add ${b} to both sides: ${a}x > ${c + b}<br>
+        Divide both sides by ${a}: x > ${(c + b) / a}
+    `;
+    return { question, answer, explanation };
 }
 
 function generateQuestion(form) {
@@ -55,26 +70,28 @@ function startQuiz(form) {
 
     function showQuestion() {
         if (currentQuestion < totalQuestions) {
-            const { question, answer } = generateQuestion(form);
+            const { question, answer, explanation } = generateQuestion(form);
             quizContainer.innerHTML = `
                 <h2>${form} Algebra Quiz</h2>
                 <p>${question}</p>
                 <input type="text" id="answer" placeholder="Your answer">
-                <button onclick="checkAnswer('${answer}')">Submit</button>
+                <button onclick="checkAnswer('${answer}', \`${explanation}\`)">Submit</button>
             `;
         } else {
             showSummary();
         }
     }
 
-    function checkAnswer(correctAnswer) {
+    function checkAnswer(correctAnswer, explanation) {
         const userAnswer = document.getElementById("answer").value;
-        feedback.textContent = (userAnswer.trim() === correctAnswer) ? "Correct!" : `Wrong! Correct answer: ${correctAnswer}`;
+        feedback.innerHTML = (userAnswer.trim() === correctAnswer) ?
+            `✅ Correct!<br>${explanation}` :
+            `❌ Wrong! Correct answer: ${correctAnswer}<br>${explanation}`;
         currentQuestion++;
         setTimeout(() => {
-            feedback.textContent = "";
+            feedback.innerHTML = "";
             showQuestion();
-        }, 1000);
+        }, 3000);
     }
 
     function showSummary() {
