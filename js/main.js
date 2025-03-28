@@ -48,3 +48,10 @@ function startQuiz(form) {
 
     showQuestion();
 }
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("JS Loaded!");
+    const testButton = document.createElement("button");
+    testButton.textContent = "Test Click";
+    testButton.addEventListener("click", () => alert("Button clicked!"));
+    document.body.appendChild(testButton);
+});
