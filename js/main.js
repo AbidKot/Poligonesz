@@ -1,55 +1,43 @@
-// js/main.js
-import { generateForm1Question, generateForm2Question, generateForm3Question } from './questions.js';
-
 function generateQuestion(form) {
     if (form === "Form 1") return generateForm1Question();
     if (form === "Form 2") return generateForm2Question();
     if (form === "Form 3") return generateForm3Question();
 }
 
-let currentQuestion = 0;
-let totalQuestions = 5;
-
-function checkAnswer(correctAnswer, explanation) {
-    const userAnswer = document.getElementById("answer").value;
-    const feedback = document.getElementById("feedback");
-    if (userAnswer.trim() === correctAnswer) {
-        feedback.innerHTML = `✅ Correct!<br>${explanation}`;
-    } else {
-        feedback.innerHTML = `❌ Wrong! Correct answer: ${correctAnswer}<br>${explanation}`;
-    }
-    currentQuestion++;
-    setTimeout(() => {
-        feedback.innerHTML = "";
-        showQuestion();
-    }, 3000);
-}
-
 function startQuiz(form) {
     const quizContainer = document.getElementById("quiz-container");
-    currentQuestion = 0;
+    const feedback = document.getElementById("feedback");
+    let score = 0;
+    let currentQuestion = 0;
+    const totalQuestions = 5;
 
     function showQuestion() {
         if (currentQuestion < totalQuestions) {
-            const { question, answer, explanation } = generateQuestion(form);
+            const { question, answer } = generateQuestion(form);
             quizContainer.innerHTML = `
                 <h2>${form} Algebra Quiz</h2>
                 <p>${question}</p>
                 <input type="text" id="answer" placeholder="Your answer">
-                <button id="submit-btn">Submit</button>
+                <button onclick="checkAnswer('${answer}')">Submit</button>
             `;
-            const submitBtn = document.getElementById("submit-btn");
-            submitBtn.addEventListener("click", () => checkAnswer(answer, explanation));
         } else {
             showSummary();
         }
     }
 
+    function checkAnswer(correctAnswer) {
+        const userAnswer = document.getElementById("answer").value.trim();
+        feedback.textContent = (userAnswer === correctAnswer) ? "Correct!" : `Wrong! Correct answer: ${correctAnswer}`;
+        currentQuestion++;
+        setTimeout(() => {
+            feedback.textContent = "";
+            showQuestion();
+        }, 1000);
+    }
+
     function showSummary() {
-        quizContainer.innerHTML = `<h2>Quiz Complete!</h2><p>You answered ${totalQuestions} questions.</p>`;
+        quizContainer.innerHTML = `<h2>Quiz Complete!</h2><p>Your score: ${score} / ${totalQuestions}</p>`;
     }
 
     showQuestion();
 }
-
-window.startQuiz = startQuiz;
