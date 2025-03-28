@@ -18,8 +18,10 @@ function startQuiz(form) {
                 <h2>${form} Algebra Quiz</h2>
                 <p>${question}</p>
                 <input type="text" id="answer" placeholder="Your answer">
-                <button onclick="checkAnswer('${answer}')">Submit</button>
+                <button id="submit-btn">Submit</button>
             `;
+            const submitBtn = document.getElementById("submit-btn");
+            submitBtn.addEventListener("click", () => checkAnswer(answer));
         } else {
             showSummary();
         }
@@ -27,7 +29,12 @@ function startQuiz(form) {
 
     function checkAnswer(correctAnswer) {
         const userAnswer = document.getElementById("answer").value.trim();
-        feedback.textContent = (userAnswer === correctAnswer) ? "Correct!" : `Wrong! Correct answer: ${correctAnswer}`;
+        if (userAnswer === correctAnswer) {
+            feedback.textContent = "Correct!";
+            score++;
+        } else {
+            feedback.textContent = `Wrong! Correct answer: ${correctAnswer}`;
+        }
         currentQuestion++;
         setTimeout(() => {
             feedback.textContent = "";
