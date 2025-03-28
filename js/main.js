@@ -1,10 +1,9 @@
-// Start the quiz with the chosen form level
 function startQuiz(form) {
     const quizContainer = document.getElementById("quiz-container");
     const feedback = document.getElementById("feedback");
     let score = 0;
     let currentQuestion = 0;
-    const totalQuestions = 5;
+    const totalQuestions = 10; // Adjusted to 10 questions
 
     function showQuestion() {
         if (currentQuestion < totalQuestions) {
@@ -14,7 +13,6 @@ function startQuiz(form) {
                 <p>${question}</p>
                 <input type="text" id="answer" placeholder="Your answer">
                 <button onclick="checkAnswer('${answer}', '${explanation}')">Submit</button>
-                <p id="feedback"></p>
             `;
         } else {
             showSummary();
@@ -22,16 +20,18 @@ function startQuiz(form) {
     }
 
     function checkAnswer(correctAnswer, explanation) {
-        const userAnswer = document.getElementById("answer").value;
-        const isCorrect = userAnswer.trim() === correctAnswer;
-
-        feedback.textContent = isCorrect ? "Correct!" : `Wrong! Correct answer: ${correctAnswer}. Explanation: ${explanation}`;
-        if (isCorrect) score++;
+        const userAnswer = document.getElementById("answer").value.trim();
+        if (userAnswer === correctAnswer) {
+            feedback.textContent = "✅ Correct!";
+            score++;
+        } else {
+            feedback.textContent = `❌ Wrong! Correct answer: ${correctAnswer}. Explanation: ${explanation}`;
+        }
         currentQuestion++;
         setTimeout(() => {
             feedback.textContent = "";
             showQuestion();
-        }, 2000);
+        }, 1500);
     }
 
     function showSummary() {
