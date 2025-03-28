@@ -3,7 +3,7 @@ function startQuiz(form) {
     const feedback = document.getElementById("feedback");
     let score = 0;
     let currentQuestion = 0;
-    const totalQuestions = 10; // Adjusted to 10 questions
+    const totalQuestions = 10;
 
     function showQuestion() {
         if (currentQuestion < totalQuestions) {
@@ -12,8 +12,12 @@ function startQuiz(form) {
                 <h2>${form} Algebra Quiz</h2>
                 <p>${question}</p>
                 <input type="text" id="answer" placeholder="Your answer">
-                <button onclick="checkAnswer('${answer}', '${explanation}')">Submit</button>
+                <button id="submitBtn">Submit</button>
             `;
+
+            // Attach an event listener to the "Submit" button
+            const submitBtn = document.getElementById("submitBtn");
+            submitBtn.addEventListener("click", () => checkAnswer(answer, explanation));
         } else {
             showSummary();
         }
