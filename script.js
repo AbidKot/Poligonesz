@@ -61,13 +61,26 @@ function generateQuestion(form) {
     if (form === "Form 3") return generateForm3Question();
 }
 
+let currentQuestion = 0;
+let totalQuestions = 5;
+
+function checkAnswer(correctAnswer, explanation) {
+    const userAnswer = document.getElementById("answer").value;
+    const feedback = document.getElementById("feedback");
+    feedback.innerHTML = (userAnswer.trim() === correctAnswer) ?
+        `✅ Correct!<br>${explanation}` :
+        `❌ Wrong! Correct answer: ${correctAnswer}<br>${explanation}`;
+    currentQuestion++;
+    setTimeout(() => {
+        feedback.innerHTML = "";
+        showQuestion();
+    }, 3000);
+}
+
 function startQuiz(form) {
     const quizContainer = document.getElementById("quiz-container");
-    const feedback = document.getElementById("feedback");
-    let score = 0;
-    let currentQuestion = 0;
-    const totalQuestions = 5;
-
+    currentQuestion = 0;
+    
     function showQuestion() {
         if (currentQuestion < totalQuestions) {
             const { question, answer, explanation } = generateQuestion(form);
@@ -82,20 +95,8 @@ function startQuiz(form) {
         }
     }
 
-    function checkAnswer(correctAnswer, explanation) {
-        const userAnswer = document.getElementById("answer").value;
-        feedback.innerHTML = (userAnswer.trim() === correctAnswer) ?
-            `✅ Correct!<br>${explanation}` :
-            `❌ Wrong! Correct answer: ${correctAnswer}<br>${explanation}`;
-        currentQuestion++;
-        setTimeout(() => {
-            feedback.innerHTML = "";
-            showQuestion();
-        }, 3000);
-    }
-
     function showSummary() {
-        quizContainer.innerHTML = `<h2>Quiz Complete!</h2><p>Your score: ${score} / ${totalQuestions}</p>`;
+        quizContainer.innerHTML = `<h2>Quiz Complete!</h2><p>You answered ${currentQuestion} questions.</p>`;
     }
 
     showQuestion();
