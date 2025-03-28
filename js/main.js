@@ -7,29 +7,31 @@ function startQuiz(form) {
 
     function showQuestion() {
         if (currentQuestion < totalQuestions) {
-            const { question, answer, explanation } = generateQuestion(form);
+            const { question, answer } = generateQuestion(form);
             quizContainer.innerHTML = `
                 <h2>${form} Algebra Quiz</h2>
                 <p>${question}</p>
                 <input type="text" id="answer" placeholder="Your answer">
                 <button id="submitBtn">Submit</button>
             `;
-
-            // Attach an event listener to the "Submit" button
+            
+            // Add event listener after the button is rendered
             const submitBtn = document.getElementById("submitBtn");
-            submitBtn.addEventListener("click", () => checkAnswer(answer, explanation));
+            submitBtn.addEventListener("click", function() {
+                checkAnswer(answer);
+            });
         } else {
             showSummary();
         }
     }
 
-    function checkAnswer(correctAnswer, explanation) {
+    function checkAnswer(correctAnswer) {
         const userAnswer = document.getElementById("answer").value.trim();
         if (userAnswer === correctAnswer) {
             feedback.textContent = "✅ Correct!";
             score++;
         } else {
-            feedback.textContent = `❌ Wrong! Correct answer: ${correctAnswer}. Explanation: ${explanation}`;
+            feedback.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
         }
         currentQuestion++;
         setTimeout(() => {
