@@ -3,27 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shapes in Space</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Algebra Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>SHAPES <br> IN SPACE!</h1>
-            <p>Locating the position of shapes in 3D!</p>
+            <h1>Algebra Quiz</h1>
+            <p>Select your form and start the quiz!</p>
         </header>
-        
-        <div class="buttons">
-            <button>Recall: 3D and Shapes</button>
-            <button>Coordinate Systems</button>
-            <button>Locating Shapes in 3D Space</button>
+
+        <div class="form-selection">
+            <button onclick="startQuiz('Form 1')">Form 1</button>
+            <button onclick="startQuiz('Form 2')">Form 2</button>
+            <button onclick="startQuiz('Form 3')">Form 3</button>
         </div>
-        
-        <div class="illustration">
-            <img src="image.png" alt="3D Shapes Illustration">
+
+        <div id="quiz-container"></div>
+        <p id="feedback"></p>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebra Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Algebra Quiz</h1>
+            <p>Select your form and start the quiz!</p>
+        </header>
+
+        <div class="form-selection">
+            <button onclick="startQuiz('Form 1')">Form 1</button>
+            <button onclick="startQuiz('Form 2')">Form 2</button>
+            <button onclick="startQuiz('Form 3')">Form 3</button>
         </div>
-        
-        <footer>
+
+        <div id="quiz-container"></div>
+        <p id="feedback"></p>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+
             <p>INSPIRED BY <strong>mathspace</strong></p>
         </footer>
     </div>
