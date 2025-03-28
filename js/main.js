@@ -27,7 +27,10 @@ function startQuiz(form) {
 
     function checkAnswer(correctAnswer) {
         const userAnswer = document.getElementById("answer").value.trim();
-        if (userAnswer === correctAnswer) {
+        const formattedAnswer = correctAnswer.toString().replace(/\s+/g, '');
+        const formattedUserAnswer = userAnswer.replace(/\s+/g, '');
+
+        if (formattedUserAnswer === formattedAnswer) {
             feedback.textContent = "✅ Correct!";
             score++;
         } else {
