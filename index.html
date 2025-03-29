@@ -3,78 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poligonesz Algebra Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        .quiz-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-
-        .quiz-container button {
-            margin: 5px;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-
-        .quiz-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .question {
-            margin: 15px 0;
-            font-weight: bold;
-        }
-
-        .answer-input {
-            padding: 8px;
-            margin: 5px;
-            width: 80%;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-    </style>
+    <title>Shapes in Space!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <h1>Poligonesz Algebra Quiz</h1>
-        <div>
-            <button onclick="startQuiz('Form 1')">Start Form 1 Quiz</button>
-            <button onclick="startQuiz('Form 2')">Start Form 2 Quiz</button>
-            <button onclick="startQuiz('Form 3')">Start Form 3 Quiz</button>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="#">Learning</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="intro">
+            <h1>Shapes in Space!</h1>
+            <p>Explore the world of shapes and learn algebra like never before.</p>
         </div>
-        <div id="question" class="question">Click a button to start the quiz!</div>
-        <input type="text" id="answer" class="answer-input" placeholder="Enter your answer">
-        <button onclick="checkAnswer('Form 1')">Check Answer</button>
-    </div>
-
-    <!-- Link JavaScript files -->
-    <script src="js/form1.js"></script>
-    <script src="js/form2.js"></script>
-    <script src="js/form3.js"></script>
-    <script src="js/main.js"></script>
+    </header>
 </body>
 </html>
