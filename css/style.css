@@ -1,41 +1,73 @@
+/* General Styling */
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    margin: 0;
-    padding: 0;
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 1rem;
+    padding: 1rem 0;
     text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav {
+    margin: 1rem 0;
 }
 
 nav a {
     color: #fff;
-    margin: 0 1rem;
     text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #555;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #777;
 }
 
 main {
-    margin: 2rem;
+    padding: 2rem;
     text-align: center;
 }
 
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* Button Styling */
 button {
-    margin: 0.5rem;
     padding: 0.5rem 1rem;
+    margin: 0.5rem;
     background-color: #555;
     color: #fff;
     border: none;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #777;
+}
+
+/* Quiz Container */
+#quiz-container {
+    margin-top: 1.5rem;
 }
 
 input[type="text"] {
@@ -45,7 +77,9 @@ input[type="text"] {
     border-radius: 5px;
 }
 
+/* Feedback Styling */
 #feedback {
     margin-top: 1rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    color: #007bff;
 }
