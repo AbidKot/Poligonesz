@@ -1,52 +1,57 @@
+// Function to load and display the question
 function startQuiz(form) {
-    const quizContainer = document.getElementById("quiz-container");
-    const feedback = document.getElementById("feedback");
-    let score = 0;
-    let currentQuestion = 0;
-    const totalQuestions = 10;
+    let questionObj;
 
-    function showQuestion() {
-        if (currentQuestion < totalQuestions) {
-            const { question, answer } = generateQuestion(form);
-            quizContainer.innerHTML = `
-                <h2>${form} Algebra Quiz</h2>
-                <p>${question}</p>
-                <input type="text" id="answer" placeholder="Your answer">
-                <button id="submitBtn">Submit</button>
-            `;
-
-            // Add event listener to the submit button
-            const submitBtn = document.getElementById("submitBtn");
-            submitBtn.addEventListener("click", () => checkAnswer(answer));
-        } else {
-            showSummary();
-        }
+    // Check which form was selected and generate the question
+    switch (form) {
+        case "Form 1":
+            questionObj = generateForm1Question();
+            break;
+        case "Form 2":
+            questionObj = generateForm2Question();
+            break;
+        case "Form 3":
+            questionObj = generateForm3Question();
+            break;
+        default:
+            console.error("Invalid form selected");
+            return;
     }
 
-    function checkAnswer(correctAnswer) {
-        const userAnswer = document.getElementById("answer").value.trim();
-        const formattedAnswer = correctAnswer.toString().replace(/\s+/g, '');
-        const formattedUserAnswer = userAnswer.replace(/\s+/g, '');
+    // Display the question and clear the answer field
+    if (questionObj) {
+        console.log("Generated Question:", questionObj.question);
+        console.log("Answer:", questionObj.answer);
+        document.getElementById("question").innerText = questionObj.question;
+        document.getElementById("answer").value = ""; // Clear previous answer
+    }
+}
 
-        if (formattedUserAnswer === formattedAnswer) {
-            feedback.textContent = "✅ Correct!";
-            score++;
-        } else {
-            feedback.textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
-        }
-        currentQuestion++;
-        setTimeout(() => {
-            feedback.textContent = "";
-            showQuestion();
-        }, 1500);
+// Function to check the user's answer
+function checkAnswer(form) {
+    let userAnswer = document.getElementById("answer").value;
+
+    // Get the correct answer based on the form
+    let correctAnswer;
+    switch (form) {
+        case "Form 1":
+            correctAnswer = generateForm1Question().answer;
+            break;
+        case "Form 2":
+            correctAnswer = generateForm2Question().answer;
+            break;
+        case "Form 3":
+            correctAnswer = generateForm3Question().answer;
+            break;
+        default:
+            console.error("Invalid form selected");
+            return;
     }
 
-    function showSummary() {
-        quizContainer.innerHTML = `
-            <h2>Quiz Complete!</h2>
-            <p>Your score: ${score} / ${totalQuestions}</p>
-        `;
+    // Compare and display result
+    if (userAnswer === correctAnswer) {
+        alert("Correct!");
+    } else {
+        alert(`Incorrect! The correct answer is: ${correctAnswer}`);
     }
-
-    showQuestion();
 }
