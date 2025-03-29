@@ -14,12 +14,10 @@ function startQuiz(form) {
                 <input type="text" id="answer" placeholder="Your answer">
                 <button id="submitBtn">Submit</button>
             `;
-            
-            // Add event listener after the button is rendered
+
+            // Add event listener to the submit button
             const submitBtn = document.getElementById("submitBtn");
-            submitBtn.addEventListener("click", function() {
-                checkAnswer(answer);
-            });
+            submitBtn.addEventListener("click", () => checkAnswer(answer));
         } else {
             showSummary();
         }
