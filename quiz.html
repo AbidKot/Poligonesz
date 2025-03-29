@@ -2,46 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - MumtazAlgebra</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/quiz.js" defer></script>
 </head>
 <body>
     <header>
+        <h1>MumtazAlgebra</h1>
         <nav>
-            <div class="logo">MumtazAlgebra</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="learning.html">Learning</a></li>
-                <li><a href="about.html">About Us</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="learning.html">Learning</a>
+            <a href="about.html">About Us</a>
         </nav>
     </header>
-
-    <section class="quiz-section">
+    <main>
         <h2>Select Your Form</h2>
-        <div class="quiz-options">
-            <button onclick="loadQuiz('form1')">Form 1 Quiz</button>
-            <button onclick="loadQuiz('form2')">Form 2 Quiz</button>
-            <button onclick="loadQuiz('form3')">Form 3 Quiz</button>
+        <div class="quiz-buttons">
+            <button id="form1">Form 1 Quiz</button>
+            <button id="form2">Form 2 Quiz</button>
+            <button id="form3">Form 3 Quiz</button>
         </div>
-        <div class="quiz-container">
-            <p id="question">Please select a form to start the quiz.</p>
-            <input type="text" id="answer" placeholder="Your answer" disabled>
-            <button onclick="checkAnswer()">Submit</button>
-            <p id="feedback"></p>
+        <p id="score">Score: 0</p>
+        <div id="quiz-container">
+            <p id="question">Loading questions...</p>
+            <input type="text" id="answer" placeholder="Your answer">
+            <button id="submit">Submit</button>
         </div>
-    </section>
-
-    <script>
-        function loadQuiz(form) {
-            const script = document.createElement("script");
-            script.src = `js/quiz-${form}.js`;
-            document.body.appendChild(script);
-            document.getElementById("answer").disabled = false;
-            document.getElementById("question").textContent = "Loading questions...";
-        }
-    </script>
+    </main>
 </body>
 </html>
