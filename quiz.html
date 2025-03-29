@@ -2,33 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz - MumtazAlgebra</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/quiz.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MumtazAlgebra Quiz</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/form1.js" defer></script>
+    <script src="./js/form2.js" defer></script>
+    <script src="./js/form3.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>MumtazAlgebra</h1>
+        <h1>MumtazAlgebra Quiz</h1>
         <nav>
             <a href="index.html">Home</a>
+            <a href="learn.html">Learn</a>
             <a href="quiz.html">Quiz</a>
-            <a href="learning.html">Learning</a>
             <a href="about.html">About Us</a>
         </nav>
     </header>
     <main>
         <h2>Select Your Form</h2>
-        <div class="quiz-buttons">
-            <button id="form1">Form 1 Quiz</button>
-            <button id="form2">Form 2 Quiz</button>
-            <button id="form3">Form 3 Quiz</button>
+        <div class="form-selection">
+            <button onclick="generateForm1Question()">Form 1</button>
+            <button onclick="generateForm2Question()">Form 2</button>
+            <button onclick="generateForm3Question()">Form 3</button>
         </div>
-        <p id="score">Score: 0</p>
         <div id="quiz-container">
-            <p id="question">Loading questions...</p>
-            <input type="text" id="answer" placeholder="Your answer">
-            <button id="submit">Submit</button>
+            <p id="question">Click a button to generate a question!</p>
+            <input type="text" id="answer" placeholder="Your answer...">
+            <button onclick="checkAnswer()">Submit</button>
+            <p id="feedback"></p>
         </div>
     </main>
+    <footer>
+        <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
+    </footer>
 </body>
 </html>
