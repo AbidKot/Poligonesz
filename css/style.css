@@ -1,78 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
-body {
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    background-color: #ff6f61;
-    color: white;
-    padding: 1rem 2rem;
-}
-
-nav {
+.quiz-options {
+    margin: 1rem 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-nav .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.hero {
-    background-color: #ffb997;
-    padding: 5rem 0;
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 600px;
-    margin: auto;
-}
-
-.hero-btn {
-    display: inline-block;
-    margin-top: 1rem;
+.quiz-options button {
     padding: 0.5rem 1rem;
     background-color: #ff6f61;
     color: white;
-    text-decoration: none;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.quiz-section {
-    padding: 2rem;
-    text-align: center;
-}
-
-.quiz-container {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    margin: 1rem auto;
-    max-width: 400px;
+.quiz-options button:hover {
+    background-color: #ff8561;
 }
