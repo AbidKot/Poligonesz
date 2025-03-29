@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algebra Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Quiz - MumtazAlgebra</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <nav>
+            <div class="logo">MumtazAlgebra</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="#">Learning</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="learning.html">Learning</a></li>
+                <li><a href="about.html">About Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <section class="quiz-section">
         <h2>Algebra Quiz</h2>
-        <div id="quiz-container">
-            <p id="question">Loading question...</p>
+        <div class="quiz-container">
+            <p id="question">Loading...</p>
             <input type="text" id="answer" placeholder="Your answer">
             <button onclick="checkAnswer()">Submit</button>
             <p id="feedback"></p>
         </div>
-    </main>
+    </section>
 
-    <script src="quiz.js"></script>
+    <script src="js/quiz.js"></script>
 </body>
 </html>
-
