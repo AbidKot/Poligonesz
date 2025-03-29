@@ -3,24 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MumtazAlgebra - Learn</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>MumtazAlgebra - Learning</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #444;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 1rem 0;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #444;
+            padding: 0.5rem 1rem;
+            background-color: #ddd;
+            border-radius: 8px;
+        }
+        .navbar a:hover {
+            background-color: #bbb;
+        }
+        .content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #444;
+        }
+        p, li {
+            margin: 0.5rem 0;
+        }
+        .mini-navbar {
+            margin-bottom: 1rem;
+        }
+        .mini-navbar a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #444;
+        }
+        .mini-navbar a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>MumtazAlgebra - Learn</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="learn.html">Learn</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="about.html">About Us</a>
-        </nav>
+        <h1>MumtazAlgebra - Learning</h1>
     </header>
-    <main>
-        <h2>Learn Algebra</h2>
-        <p>Explore various algebra topics from Form 1 to Form 5. Strengthen your skills and master algebraic concepts!</p>
-    </main>
-    <footer>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="about.html">About Us</a>
+    </div>
+    <div class="content">
+        <div class="mini-navbar">
+            <a href="#form1">Form 1</a>
+            <a href="#form2">Form 2</a>
+            <a href="#form3">Form 3</a>
+        </div>
+        <section id="form1">
+            <h2>Form 1 Algebra Notes</h2>
+            <p><strong>1. Algebraic Expressions:</strong> Mathematical phrases that include numbers, variables, and operations. Examples: 3x + 5, 4a - 7.</p>
+            <p><strong>2. Simplifying Algebraic Expressions:</strong> Combine like terms by adding or subtracting coefficients. Example: 3x + 5x = 8x (Combine 3 and 5).</p>
+            <p><strong>3. Linear Equations:</strong> Solve equations like ax + b = c by isolating the variable. Example: 3x + 5 = 20 → x = 5.</p>
+            <p><strong>4. Factoring:</strong> Express as a product of factors by bringing out the common term. Example: x^2 + 5x = x(x + 5).</p>
+            <p><strong>5. Expanding Brackets:</strong> Multiply each term inside the bracket by the factor outside. Example: 2(x + 3) = 2x + 6.</p>
+            <p><strong>6. Substitution:</strong> Replace variables with values to calculate the result. Example: If x = 4, then 3x + 7 = 19.</p>
+            <p><strong>7. Problem Solving:</strong> Use algebra to model and solve real-world problems.</p>
+        </section>
+    </div>
+</body>
+</html>
+
         <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
     </footer>
 </body>
