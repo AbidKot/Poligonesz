@@ -1,39 +1,58 @@
-document.getElementById("form1").addEventListener("click", () => loadQuestion(1));
-document.getElementById("form2").addEventListener("click", () => loadQuestion(2));
-document.getElementById("form3").addEventListener("click", () => loadQuestion(3));
-document.getElementById("submit").addEventListener("click", checkAnswer);
+// Dynamic Algebra Quiz Script
 
-let currentQuestion = "";
-let correctAnswer = "";
-let score = 0;
-
-function updateScore(isCorrect) {
-    if (isCorrect) {
-        score++;
-        alert("Correct!");
-    } else {
-        alert(`Wrong! The correct answer was: ${correctAnswer}`);
-    }
-    document.getElementById("score").innerHTML = `Score: ${score}`;
-    document.getElementById("answer").value = "";
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function checkAnswer() {
-    const userAnswer = document.getElementById("answer").value.trim();
-    updateScore(userAnswer === correctAnswer);
+function getRandomVariable() {
+    const variables = ['x', 'y', 'a', 'b', 'm', 'n'];
+    return variables[getRandomInt(0, variables.length - 1)];
 }
 
-function loadQuestion(form) {
-    switch (form) {
+function generateQuestion(form) {
+    const operation = ['simplify', 'extract', 'expand', 'factorize', 'evaluate', 'solve', 'rearrange'];
+    const action = operation[getRandomInt(0, operation.length - 1)];
+    const var1 = getRandomVariable();
+    const var2 = getRandomVariable();
+    const num1 = getRandomInt(1, 10);
+    const num2 = getRandomInt(1, 10);
+    const num3 = getRandomInt(1, 10);
+
+    let question = '';
+    let answer = 0;
+
+    switch(form) {
         case 1:
-            ({ question: currentQuestion, answer: correctAnswer } = generateForm1Question());
+            question = `${action} the expression: ${num1}${var1} + ${num2}${var2}`;
+            answer = num1 + num2;
             break;
         case 2:
-            ({ question: currentQuestion, answer: correctAnswer } = generateForm2Question());
+            question = `${action} the equation: ${num1}${var1} - ${num2} = ${num3}`;
+            answer = (num3 + num2) / num1;
             break;
         case 3:
-            ({ question: currentQuestion, answer: correctAnswer } = generateForm3Question());
+            question = `${action} the quadratic: ${num1}${var1}² + ${num2}${var1} + ${num3}`;
+            answer = -num2 / (2 * num1);
             break;
     }
-    document.getElementById("question").innerHTML = currentQuestion;
+
+    return { question, answer };
+}
+
+function showQuestion(form) {
+    const quizContainer = document.getElementById('quiz');
+    const { question, answer } = generateQuestion(form);
+    const userAnswer = prompt(question);
+
+    if (userAnswer == answer) {
+        alert('Correct!');
+    } else {
+        alert(`Wrong! The correct answer is ${answer}.`);
+    }
+
+    quizContainer.innerHTML = `<p>${question}</p>`;
+}
+
+function startQuiz(form) {
+    showQuestion(form);
 }
