@@ -31,16 +31,20 @@ header h1 {
 
 nav {
     margin: 1rem 0;
+    text-align: center; /* Center the nav bar */
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    margin: 0 1rem;
+    margin: 0 0.5rem; /* Reduced margin for a more compact look */
     padding: 0.5rem 1rem;
     background-color: #555;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    display: inline-block; /* Prevent overlapping */
+    vertical-align: middle; /* Align vertically */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 nav a:hover {
