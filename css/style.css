@@ -132,3 +132,46 @@ input[type="text"] {
     object-fit: cover;
     border-radius: 15px;
 }
+
+/*home page*/
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap; /* Makes it responsive */
+}
+
+.image-left, .image-right {
+    flex: 1;
+    max-width: 300px; /* Adjust size as needed */
+}
+
+.image-left img, .image-right img {
+    width: 100%; /* Make the image fill its container */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-message {
+    flex: 2;
+    max-width: 600px; /* Adjust for text width */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .welcome-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-left, .image-right {
+        max-width: 80%; /* Smaller on mobile */
+    }
+
+    .welcome-message {
+        margin: 15px 0;
+    }
+}
