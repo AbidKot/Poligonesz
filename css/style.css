@@ -100,31 +100,27 @@ input[type="text"] {
     color: #007bff;
 }
 
+/* slideshow on aboutus page*/
 .slideshow-container {
     position: relative;
-    width: 80%; /* Adjust to make it bigger or smaller */
-    max-width: 800px; /* Limit the size */
+    width: 100%; /* Full width */
+    max-width: 100%; /* Stretch across the screen */
+    height: 400px; /* Adjust the height to make it rectangular */
     margin: 20px auto;
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.slide {
-    display: none;
-}
-
 .slide img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Maintain the height */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
     border-radius: 15px;
 }
 
-.fade {
-    animation: fadeEffect 1.5s;
-}
-
-@keyframes fadeEffect {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
+@media (max-width: 768px) {
+    .slideshow-container {
+        height: 250px; /* Adjust height for mobile */
+    }
 }
