@@ -101,26 +101,34 @@ input[type="text"] {
 }
 
 /* slideshow on aboutus page*/
+/* Slideshow Container */
 .slideshow-container {
     position: relative;
-    width: 100%; /* Full width */
-    max-width: 100%; /* Stretch across the screen */
-    height: 400px; /* Adjust the height to make it rectangular */
+    width: 100%; 
+    max-width: 100%; 
+    height: 400px;
     margin: 20px auto;
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.slide img {
-    width: 100%; /* Make the image fill the container */
-    height: 100%; /* Maintain the height */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
-    border-radius: 15px;
+/* Slide Style */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Smooth fade */
 }
 
-@media (max-width: 768px) {
-    .slideshow-container {
-        height: 250px; /* Adjust height for mobile */
-    }
+.slide.active {
+    opacity: 1; /* Visible slide */
+}
+
+.slide img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 15px;
 }
