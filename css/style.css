@@ -99,3 +99,32 @@ input[type="text"] {
     font-size: 1.2rem;
     color: #007bff;
 }
+
+.slideshow-container {
+    position: relative;
+    width: 80%; /* Adjust to make it bigger or smaller */
+    max-width: 800px; /* Limit the size */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slide {
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
