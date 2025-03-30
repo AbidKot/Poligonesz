@@ -10,7 +10,8 @@ body {
     border: 1px solid;
     height: 300px;
     width: 300 px;
-    position: static;      
+    position: static;
+    shadow: 5px 5px 5px grey;
     }
 #box img { 
         width: 100%;
