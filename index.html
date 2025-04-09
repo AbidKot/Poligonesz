@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MumtazAlgebra - Home</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MumtazAlgebra - Home</title>
+  <link rel="stylesheet" href="./css/style.css"/>
+  <style>
+    /* Optional: View counter style */
+    #viewCounter {
+      font-size: 14px;
+      color: #555;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>MumtazAlgebra</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="learn.html">Learn</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="about.html">About Us</a>
-        </nav>
-    </header>
-    <main>
-        <div class="welcome-container">
-    <div class="image-left">
-        <img src="./media/MIRPIZ.png" alt="Left Image">
-    </div>
-    <div class="welcome-message">
+  <header>
+    <h1>MumtazAlgebra</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="learn.html">Learn</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="welcome-container">
+      <div class="image-left">
+        <img src="./media/MIRPIZ.png" alt="Left Image" />
+      </div>
+      <div class="welcome-message">
         <h1>Welcome to Poligonesz!</h1>
         <p>This is a welcoming message that will be longer later. Enjoy exploring the world of polygons and mathematics!</p>
+      </div>
+      <div class="image-right">
+        <img src="./media/image.png" alt="Right Image" />
+      </div>
     </div>
-    <div class="image-right">
-        <img src="./media/image.png" alt="Right Image">
-    </div>
-</div>
-    </main>
-    <footer>
-        <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
-    </footer>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
+    <div id="viewCounter">Loading views...</div>
+  </footer>
+
+  <script>
+    // View counter using CountAPI
+    fetch('https://api.countapi.xyz/update/poligonesz/index/?amount=1')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('viewCounter').innerText = `👁️ ${data.value} views`;
+      });
+  </script>
 </body>
 </html>
