@@ -32,15 +32,6 @@ function generateForm3Question() {
                 question: `Expand: (${a}x + ${b})(${c}x - ${b})`,
                 answer: `${a * c}x² + ${(a * -b) + (b * c)}x - ${b * b}`
             };
-        },
-        () => {
-            const a = Math.floor(Math.random() * 10) + 1;
-            const b = Math.floor(Math.random() * 10) + 1;
-            const c = Math.floor(Math.random() * 10) + 1;
-            return {
-                question: `Solve: ${a}x² + ${b}x + ${c} = 0`,
-                answer: "Quadratic formula or factorization needed"
-            };
         }
     ];
 
