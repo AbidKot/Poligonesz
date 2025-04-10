@@ -51,11 +51,11 @@
   <div id="viewCounter">👁️ Loading views...</div>
 </footer>
 
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+<!-- Firebase SDKs for authentication (module imports) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
-<script>
   const firebaseConfig = {
     apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
     authDomain: "mumtazalgebra-d6768.firebaseapp.com",
@@ -65,12 +65,12 @@
     appId: "1:721553587532:web:32299e7e11d9cc8535a3e9"
   };
 
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-  auth.onAuthStateChanged(user => {
+  onAuthStateChanged(auth, (user) => {
     if (!user) {
-      window.location.href = "signup.html";
+      window.location.href = "signup.html"; // redirect if not logged in
     }
   });
 </script>
