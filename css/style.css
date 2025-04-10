@@ -25,11 +25,11 @@ main {
 }
 
 footer {
-    background-color: #333;
-    color: #008080;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto;
 }
 
 /* Button Styling */
