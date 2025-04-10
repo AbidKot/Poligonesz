@@ -6,7 +6,6 @@
   <title>MumtazAlgebra - Home</title>
   <link rel="stylesheet" href="./css/style.css"/>
   <style>
-    /* Optional: View counter style */
     #viewCounter {
       font-size: 14px;
       color: #555;
@@ -16,59 +15,65 @@
   </style>
 </head>
 <body>
-<!-- Top full-width logo bar -->
+
 <header class="full-logo-header">
   <img src="./media/logo.png" alt="MumtazAlgebra Full Logo" class="full-logo-img">
 </header>
 
-<!-- Navigation bar under logo -->
 <nav class="main-nav">
   <a href="index.html">Home</a>
   <a href="learn.html">Learn</a>
   <a href="quiz.html">Quiz</a>
   <a href="about.html">About Us</a>
+  <button onclick="auth.signOut()">Log Out</button>
 </nav>
-<!-- Signup -->
-<input type="email" id="signupEmail" placeholder="Email">
-<input type="password" id="signupPassword" placeholder="Password">
-<button onclick="signUp()">Sign Up</button>
 
-<!-- Login -->
-<input type="email" id="loginEmail" placeholder="Email">
-<input type="password" id="loginPassword" placeholder="Password">
-<button onclick="logIn()">Login</button>
-  <main>
-    <div class="welcome-container">
-      <div class="image-left">
-        <img src="./media/MIRPIZ.png" alt="Left Image" />
-      </div>
-      <div class="welcome-message">
-        <h1>Welcome to MumtazAlgebra!</h1>
-        <p>This is a welcoming message that will be longer later. Enjoy exploring the world of polygons and mathematics!</p>
-      </div>
-      <div class="image-right">
-        <img src="./media/image.png" alt="Right Image" />
-      </div>
+<main>
+  <div class="welcome-container">
+    <div class="image-left">
+      <img src="./media/MIRPIZ.png" alt="Left Image" />
     </div>
-    <video autoplay muted loop id="bg-video">
-  <source src="media/Rounded Neon Red Lines Gaming Background Video Live Wallpaper VJ Loop Animation Retro Concert Visual.mp4" type="video/mp4">
-</video>
-  </main>
+    <div class="welcome-message">
+      <h1>Welcome to MumtazAlgebra!</h1>
+      <p>This is a welcoming message that will be longer later. Enjoy exploring the world of polygons and mathematics!</p>
+    </div>
+    <div class="image-right">
+      <img src="./media/image.png" alt="Right Image" />
+    </div>
+  </div>
+  <video autoplay muted loop id="bg-video">
+    <source src="media/Rounded Neon Red Lines Gaming Background Video Live Wallpaper VJ Loop Animation Retro Concert Visual.mp4" type="video/mp4">
+  </video>
+</main>
 
 <footer>
   <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
   <div id="viewCounter">👁️ Loading views...</div>
 </footer>
-  
-<!-- Firebase SDKs (always first) -->
+
 <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
 
-<!-- Your JS files (in order!) -->
-<script src="./js/firebase-config.js"></script>
-<script src="./js/auth.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
+    authDomain: "mumtazalgebra-d6768.firebaseapp.com",
+    projectId: "mumtazalgebra-d6768",
+    storageBucket: "mumtazalgebra-d6768.appspot.com",
+    messagingSenderId: "721553587532",
+    appId: "1:721553587532:web:32299e7e11d9cc8535a3e9"
+  };
 
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  auth.onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "signup.html";
+    }
+  });
+</script>
 
 </body>
 </html>
