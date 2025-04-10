@@ -51,24 +51,27 @@
   <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
   <div id="viewCounter">👁️ Loading views...</div>
 </footer>
+  
+  <!-- Firebase scripts -->
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+  
+  <script>
+    // Replace this config with yours
+  const firebaseConfig = {
+    apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
+    authDomain: "mumtazalgebra-d6768.firebaseapp.com",
+    projectId: "mumtazalgebra-d6768",
+    storageBucket: "mumtazalgebra-d6768.firebasestorage.app",
+    messagingSenderId: "721553587532",
+    appId: "1:721553587532:web:32299e7e11d9cc8535a3e9"
+  };
 
-<script>
-  const counterElement = document.getElementById('viewCounter');
-
-  fetch('https://api.countapi.xyz/hit/mumtazalgebra/homepage', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    counterElement.innerText = `👁️ ${data.value} views`;
-  })
-  .catch(err => {
-    counterElement.innerText = '👁️ View counter error';
-    console.error('View counter failed:', err);
-  });
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 </script>
 </body>
 </html>
