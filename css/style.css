@@ -36,7 +36,7 @@ footer {
 button {
     padding: 0.5rem 1rem;
     margin: 0.5rem;
-    background-color: #555;
+    background-color: #6cbdbd;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -45,7 +45,7 @@ button {
 }
 
 button:hover {
-    background-color: #777;
+    background-color: #89f0f0;
 }
 
 /* Quiz Container */
