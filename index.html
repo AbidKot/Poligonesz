@@ -42,21 +42,21 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
-    <div id="viewCounter">Loading views...</div>
+  <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
+  <div id="viewCounter">👁️ Loading views...</div>
   </footer>
 
   <script>
   const counterElement = document.getElementById('viewCounter');
 
-  fetch('https://api.countapi.xyz/hit/abidkot.github.io/index')
+  fetch('https://api.countapi.xyz/hit/poligonesz/index')
     .then(res => res.json())
     .then(data => {
       counterElement.innerText = `👁️ ${data.value} views`;
     })
     .catch(err => {
       counterElement.innerText = '👁️ View counter error';
-      console.error('Counter error:', err);
+      console.error('View Counter Error:', err);
     });
   </script>
 </body>
