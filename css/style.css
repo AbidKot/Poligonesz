@@ -155,7 +155,7 @@ input[type="text"] {
 .full-logo-img {
   width: 100%; /* Set the width to 100% so it fills the container */
   height: 100%; /* Ensure the logo takes the full height of the container */
-  object-fit: fill; /* Preserve aspect ratio while fitting inside the container */
+  object-fit: contain; /* Preserve aspect ratio while fitting inside the container */
   display: block; /* Remove any extra space below the image */
 }
 
