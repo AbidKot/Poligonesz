@@ -8,20 +8,21 @@ body {
 
 #box {
     height: 300px;
-    width: 300 px;
+    width: 300px;  /* Fixed typo (extra space) */
     position: static;
     box-shadow: 5px 5px 5px black;
     top: 20px;
-    }
+}
 #box img { 
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 main {
     padding: 2rem;
     text-align: center;
+    flex-grow: 1; /* Ensure main content pushes the footer down */
 }
 
 footer {
@@ -67,7 +68,7 @@ input[type="text"] {
     color: #007bff;
 }
 
-/* slideshow on aboutus page*/
+/* Slideshow on About Us page*/
 /* Slideshow Container */
 .slideshow-container {
     position: relative;
@@ -100,7 +101,7 @@ input[type="text"] {
     border-radius: 15px;
 }
 
-/*home page*/
+/* Home page */
 .welcome-container {
     display: flex;
     justify-content: center;
@@ -146,7 +147,7 @@ input[type="text"] {
 /* === Full Width Logo Bar === */
 .full-logo-header {
   width: 100%;
-  height: 120px; /* adjust as needed */
+  height: 120px; /* Adjust as needed */
   background-color: #d9d9d9;
   overflow: hidden;
 }
@@ -154,7 +155,7 @@ input[type="text"] {
 .full-logo-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* or 'contain' if logo looks cropped */
+  object-fit: cover; /* Or 'contain' if logo looks cropped */
   display: block;
 }
 
@@ -176,4 +177,16 @@ input[type="text"] {
 
 .main-nav a:hover {
   color: #008080;
+}
+
+/* Footer Fix */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
 }
