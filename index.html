@@ -41,23 +41,28 @@
     </div>
   </main>
 
-  <footer>
+<footer>
   <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
   <div id="viewCounter">👁️ Loading views...</div>
-  </footer>
+</footer>
 
-  <script>
+<script>
   const counterElement = document.getElementById('viewCounter');
 
-  fetch('https://api.countapi.xyz/hit/poligonesz/index')
-    .then(res => res.json())
-    .then(data => {
-      counterElement.innerText = `👁️ ${data.value} views`;
-    })
-    .catch(err => {
-      counterElement.innerText = '👁️ View counter error';
-      console.error('View Counter Error:', err);
-    });
-  </script>
+  fetch('https://api.countapi.xyz/hit/mumtazalgebra/homepage', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    counterElement.innerText = `👁️ ${data.value} views`;
+  })
+  .catch(err => {
+    counterElement.innerText = '👁️ View counter error';
+    console.error('View counter failed:', err);
+  });
+</script>
 </body>
 </html>
