@@ -2,8 +2,8 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #333;
+    color: #008080;
 }
 
 #box {
@@ -25,8 +25,8 @@ main {
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #008080;
+    color: #333;
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
