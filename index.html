@@ -25,7 +25,7 @@
   <a href="learn.html">Learn</a>
   <a href="quiz.html">Quiz</a>
   <a href="about.html">About Us</a>
-  <button id="logoutBtn">Log Out</button> <!-- Button for logout -->
+  <button id="logoutBtn">Log Out</button>
 </nav>
 
 <main>
@@ -51,10 +51,11 @@
   <div id="viewCounter">👁️ Loading views...</div>
 </footer>
 
-<!-- Firebase SDKs for authentication (module imports) -->
+<!-- Firebase SDKs for authentication and Firestore (module imports) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
@@ -67,12 +68,12 @@
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
 
   // Handle sign-out functionality
   document.getElementById('logoutBtn').addEventListener('click', () => {
     signOut(auth)
       .then(() => {
-        // Successfully signed out
         window.location.href = "signup.html";  // Redirect to sign-up page after logging out
       })
       .catch((error) => {
@@ -86,8 +87,38 @@
       window.location.href = "signup.html"; // Redirect if not logged in
     }
   });
+
+  // Firestore reference for the view count document
+  const viewCountDoc = doc(db, "siteData", "viewCount");
+
+  // Function to get and update the view count
+  async function updateViewCount() {
+    try {
+      const docSnapshot = await getDoc(viewCountDoc);
+      if (docSnapshot.exists()) {
+        // Update the view count by incrementing it
+        await updateDoc(viewCountDoc, {
+          views: increment(1)
+        });
+      } else {
+        // If no document exists, create one and set the views to 1
+        await updateDoc(viewCountDoc, {
+          views: 1
+        });
+      }
+
+      // Retrieve and display the updated view count
+      const updatedDocSnapshot = await getDoc(viewCountDoc);
+      const data = updatedDocSnapshot.data();
+      document.getElementById("viewCounter").textContent = `👁️ ${data.views} views`;
+    } catch (error) {
+      console.error("Error updating view count: ", error);
+    }
+  }
+
+  // Call the updateViewCount function on page load
+  updateViewCount();
 </script>
 
 </body>
 </html>
-
