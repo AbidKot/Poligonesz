@@ -19,33 +19,6 @@ body {
         object-fit: cover;
         }
 
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-nav {
-    margin: 1rem 0;
-    text-align: center; /* Center the nav bar */
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 0.5rem; /* Reduced margin for a more compact look */
-    padding: 0.5rem 1rem;
-    background-color: #555;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    display: inline-block; /* Prevent overlapping */
-    vertical-align: middle; /* Align vertically */
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-nav a:hover {
-    background-color: #777;
-}
-
 main {
     padding: 2rem;
     text-align: center;
@@ -170,13 +143,7 @@ input[type="text"] {
     }
 }
 
-/* Remove any existing header/nav styles that interfere */
-header {
-  margin: 0;
-  padding: 0;
-}
-
-/* Make the header bar take full width and fixed height */
+/* === Full Width Logo Bar === */
 .full-logo-header {
   width: 100%;
   height: 120px; /* adjust as needed */
@@ -184,9 +151,29 @@ header {
   overflow: hidden;
 }
 
-/* Make logo image fill the whole header bar */
 .full-logo-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* or use contain if you want the whole image visible */
+  object-fit: cover; /* or 'contain' if logo looks cropped */
+  display: block;
+}
+
+/* === Navbar Below Logo === */
+.main-nav {
+  background-color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  margin: 0 15px;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #007bff;
 }
