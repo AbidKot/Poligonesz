@@ -147,15 +147,15 @@ input[type="text"] {
 /* === Full Width Logo Bar === */
 .full-logo-header {
   width: 100%;
-  height: 120px; /* Adjust as needed */
+  height: 120px; /* Set height to your preference */
   background-color: #d9d9d9;
   overflow: hidden;
 }
 
 .full-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Or 'contain' if logo looks cropped */
+  width: auto; /* Adjust width automatically */
+  height: 100%; /* Let the height take the full container height */
+  object-fit: contain; /* This will preserve aspect ratio */
   display: block;
 }
 
