@@ -176,22 +176,19 @@ input[type="text"] {
     }
 }
 
-/* Logo + Title container */
-.logo-container {
+/* Full width logo header */
+.full-logo-header {
+  width: 100%;
+  background-color: #d9d9d9; /* same grey bar as your current one */
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding-left: 20px;
+  padding: 10px 0;
 }
 
-/* Logo image style */
-.logo-img {
-  height: 50px;
-  width: auto;
-}
-
-/* Optional: Reduce title size next to logo */
-.logo-container h1 {
-  font-size: 24px;
-  margin: 0;
+/* Logo image full width */
+.full-logo-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
