@@ -31,14 +31,14 @@
 <main>
   <div class="welcome-container">
     <div class="image-left">
-      <img src="./media/bunda_siti-removebg-preview.png" alt="Left Image" />
+      <img src="./media/age age age.jpeg" alt="Left Image" />
     </div>
     <div class="welcome-message">
       <h1>Welcome to MumtazAlgebra!</h1>
       <p>This is a welcoming message that will be longer later. Enjoy exploring the world of polygons and mathematics!</p>
     </div>
     <div class="image-right">
-      <img src="./media/bunda_siti-removebg-preview.png" alt="Right Image" />
+      <img src="./media/photo_2021-08-21_16-26-51 (2).jpg" alt="Right Image" />
     </div>
   </div>
   <video autoplay muted loop id="bg-video">
@@ -82,6 +82,19 @@
       });
   });
 
+  // Fetch the view count from Firestore and display it
+  async function fetchViewCount() {
+    const viewCountRef = doc(db, "siteData", "viewCount");
+    const docSnap = await getDoc(viewCountRef);
+
+    if (docSnap.exists()) {
+      const viewCount = docSnap.data().views;
+      document.getElementById('viewCounter').textContent = `👁️ ${viewCount} views`;
+    } else {
+      console.log("No view count document found!");
+    }
+  }
+
   // Check if user is signed in
   onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -110,6 +123,9 @@
       // Redirect to login if user is not authenticated
       window.location.href = "login.html";
     }
+
+    // Fetch and display the current view count
+    fetchViewCount();
   });
 </script>
 
