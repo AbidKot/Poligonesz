@@ -1,67 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign Up - Poligonesz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - MumtazAlgebra</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f3f4f6;
+      background-color: #f0f4f8;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
-
-    .signup-container {
-      background-color: white;
-      padding: 2rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
+    .box {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: #333;
-    }
-
     input {
-      width: 100%;
-      padding: 0.8rem;
+      display: block;
       margin: 0.5rem 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    button {
+      padding: 0.7rem;
       width: 100%;
-      padding: 0.8rem;
-      background-color: #3b82f6;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.7rem;
+      width: 100%;
+      background: #3b82f6;
       color: white;
-      font-size: 1rem;
       border: none;
-      border-radius: 8px;
-      margin-top: 1rem;
+      border-radius: 6px;
       cursor: pointer;
-      transition: 0.3s;
     }
-
-    button:hover {
-      background-color: #2563eb;
-    }
-
-    .login-link {
-      text-align: center;
+    a {
       margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-
-    .login-link a {
+      display: block;
+      text-align: center;
       color: #3b82f6;
       text-decoration: none;
     }
@@ -69,24 +49,40 @@
 </head>
 <body>
 
-  <div class="signup-container">
-    <h2>Create Your Account</h2>
-    <input type="email" id="signupEmail" placeholder="Email" required>
-    <input type="password" id="signupPassword" placeholder="Password" required>
-    <button onclick="signUp()">Sign Up</button>
+<div class="box">
+  <h2>Sign Up</h2>
+  <input type="email" id="signupEmail" placeholder="Email" />
+  <input type="password" id="signupPassword" placeholder="Password" />
+  <button onclick="signUp()">Sign Up</button>
+  <a href="login.html">Already have an account? Log In</a>
+</div>
 
-    <div class="login-link">
-      Already have an account? <a href="login.html">Log in</a>
-    </div>
-  </div>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
+    authDomain: "mumtazalgebra-d6768.firebaseapp.com",
+    projectId: "mumtazalgebra-d6768",
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-  <!-- Your custom JS files -->
-  <script src="./js/firebase-config.js"></script>
-  <script src="./js/auth.js"></script>
+  function signUp() {
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        alert("Signup successful!");
+        window.location.href = "index.html";
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+  }
+</script>
+
 </body>
 </html>
