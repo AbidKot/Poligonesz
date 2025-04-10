@@ -47,12 +47,17 @@
   </footer>
 
   <script>
-    // View counter using CountAPI
-    fetch('https://api.countapi.xyz/update/poligonesz/index/?amount=1')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('viewCounter').innerText = `👁️ ${data.value} views`;
-      });
+  const counterElement = document.getElementById('viewCounter');
+
+  fetch('https://api.countapi.xyz/hit/abidkot.github.io/index')
+    .then(res => res.json())
+    .then(data => {
+      counterElement.innerText = `👁️ ${data.value} views`;
+    })
+    .catch(err => {
+      counterElement.innerText = '👁️ View counter error';
+      console.error('Counter error:', err);
+    });
   </script>
 </body>
 </html>
