@@ -4,84 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - MumtazAlgebra</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f4f8;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .box {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    input {
-      display: block;
-      margin: 0.5rem 0;
-      padding: 0.7rem;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.7rem;
-      width: 100%;
-      background: #10b981;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    a {
-      margin-top: 1rem;
-      display: block;
-      text-align: center;
-      color: #3b82f6;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body>
 
-<div class="box">
-  <h2>Login</h2>
-  <input type="email" id="loginEmail" placeholder="Email" />
-  <input type="password" id="loginPassword" placeholder="Password" />
-  <button onclick="logIn()">Log In</button>
-  <a href="signup.html">Don't have an account? Sign Up</a>
-</div>
+<header>
+  <h1>Login to MumtazAlgebra</h1>
+</header>
 
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+<main>
+  <form id="login-form">
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    <button type="submit">Log In</button>
+  </form>
+  <p id="error-message" style="color:red; display:none;"></p>
+</main>
 
-<script>
+<footer>
+  <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
+</footer>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
   const firebaseConfig = {
     apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
     authDomain: "mumtazalgebra-d6768.firebaseapp.com",
     projectId: "mumtazalgebra-d6768",
+    storageBucket: "mumtazalgebra-d6768.appspot.com",
+    messagingSenderId: "721553587532",
+    appId: "1:721553587532:web:32299e7e11d9cc8535a3e9"
   };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
 
-  function logIn() {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    auth.signInWithEmailAndPassword(email, password)
-      .then(() => {
-        alert("Login successful!");
-        window.location.href = "index.html";
+  // Handle login
+  document.getElementById('login-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Successfully logged in
+        const user = userCredential.user;
+        window.location.href = "index.html";  // Redirect to home page after login
       })
-      .catch(error => {
-        alert(error.message);
+      .catch((error) => {
+        const errorMessage = error.message;
+        document.getElementById('error-message').textContent = errorMessage;
+        document.getElementById('error-message').style.display = 'block';
       });
-  }
+  });
 </script>
 
 </body>
