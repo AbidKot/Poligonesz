@@ -175,3 +175,23 @@ input[type="text"] {
         margin: 15px 0;
     }
 }
+
+/* Logo + Title container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+/* Logo image style */
+.logo-img {
+  height: 50px;
+  width: auto;
+}
+
+/* Optional: Reduce title size next to logo */
+.logo-container h1 {
+  font-size: 24px;
+  margin: 0;
+}
