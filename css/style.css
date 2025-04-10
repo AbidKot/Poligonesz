@@ -18,12 +18,6 @@ body {
         height: 100%;
         object-fit: cover;
         }
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
-}
 
 header h1 {
     margin: 0;
@@ -176,21 +170,23 @@ input[type="text"] {
     }
 }
 
-/* Full width logo header */
-.full-logo-header {
-  width: 100%;
-  background-color: #d9d9d9; /* same grey bar as your current one */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0;
-}
-
-/* Logo image full width */
-.full-logo-img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+/* Remove any existing header/nav styles that interfere */
+header {
   margin: 0;
   padding: 0;
+}
+
+/* Make the header bar take full width and fixed height */
+.full-logo-header {
+  width: 100%;
+  height: 120px; /* adjust as needed */
+  background-color: #d9d9d9;
+  overflow: hidden;
+}
+
+/* Make logo image fill the whole header bar */
+.full-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* or use contain if you want the whole image visible */
 }
