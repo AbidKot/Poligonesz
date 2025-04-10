@@ -1,7 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MumtazAlgebra - Home</title>
+  <link rel="stylesheet" href="./css/style.css"/>
+  <style>
+    #viewCounter {
+      font-size: 14px;
+      color: #555;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="full-logo-header">
+  <img src="./media/logo.png" alt="MumtazAlgebra Full Logo" class="full-logo-img">
+</header>
+
+<nav class="main-nav">
+  <a href="index.html">Home</a>
+  <a href="learn.html">Learn</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="about.html">About Us</a>
+  <button id="logoutBtn">Log Out</button> <!-- Button for logout -->
+</nav>
+
+<main>
+  <div class="welcome-container">
+    <div class="image-left">
+      <img src="./media/age age age.jpeg" alt="Left Image" />
+    </div>
+    <div class="welcome-message">
+      <h1>Welcome to MumtazAlgebra!</h1>
+      <p>This is a welcoming message that will be longer later. Enjoy exploring the world of polygons and mathematics!</p>
+    </div>
+    <div class="image-right">
+      <img src="./media/photo_2021-08-21_16-26-51 (2).jpg" alt="Right Image" />
+    </div>
+  </div>
+  <video autoplay muted loop id="bg-video">
+    <source src="media/Rounded Neon Red Lines Gaming Background Video Live Wallpaper VJ Loop Animation Retro Concert Visual.mp4" type="video/mp4">
+  </video>
+</main>
+
+<footer>
+  <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
+  <div id="viewCounter">👁️ Loading views...</div>
+</footer>
+
+<!-- Firebase SDKs for authentication (module imports) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-  import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBT-U0wsAxf0w14THOt5AeyyO4jd9pgY1s",
@@ -15,6 +69,18 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
+
+  // Handle sign-out functionality
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    signOut(auth)
+      .then(() => {
+        // Successfully signed out
+        window.location.href = "signup.html";  // Redirect to sign-up page after logging out
+      })
+      .catch((error) => {
+        console.error("Error signing out: ", error);
+      });
+  });
 
   // Check if user is signed in
   onAuthStateChanged(auth, async (user) => {
@@ -46,3 +112,6 @@
     }
   });
 </script>
+
+</body>
+</html>
