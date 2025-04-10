@@ -1,60 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MumtazAlgebra - Home</title>
-  <link rel="stylesheet" href="./css/style.css"/>
-  <style>
-    #viewCounter {
-      font-size: 14px;
-      color: #555;
-      font-family: 'Poppins', sans-serif;
-      margin-top: 5px;
-    }
-  </style>
-</head>
-<body>
-
-<header class="full-logo-header">
-  <img src="./media/logo.png" alt="MumtazAlgebra Full Logo" class="full-logo-img">
-</header>
-
-<nav class="main-nav">
-  <a href="index.html">Home</a>
-  <a href="learn.html">Learn</a>
-  <a href="quiz.html">Quiz</a>
-  <a href="about.html">About Us</a>
-  <button id="logoutBtn">Log Out</button>
-</nav>
-
-<main>
-  <div class="welcome-container">
-    <div class="image-left">
-      <img src="./media/bunda_siti-removebg-preview.png" alt="Left Image" />
-    </div>
-    <div class="welcome-message">
-      <h1>Welcome to MumtazAlgebra!</h1>
-      <p>This is a welcoming message that will be longer later. Enjoy exploring the world of polygons and mathematics!</p>
-    </div>
-    <div class="image-right">
-      <img src="./media/bunda_siti-removebg-preview.png" alt="Right Image" />
-    </div>
-  </div>
-  <video autoplay muted loop id="bg-video">
-    <source src="media/Rounded Neon Red Lines Gaming Background Video Live Wallpaper VJ Loop Animation Retro Concert Visual.mp4" type="video/mp4">
-  </video>
-</main>
-
-<footer>
-  <p>&copy; 2025 MumtazAlgebra. All rights reserved.</p>
-  <div id="viewCounter">👁️ Loading views...</div>
-</footer>
-
-<!-- Firebase SDKs for authentication and Firestore (module imports) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
   import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -70,55 +16,33 @@
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Handle sign-out functionality
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    signOut(auth)
-      .then(() => {
-        window.location.href = "signup.html";  // Redirect to sign-up page after logging out
-      })
-      .catch((error) => {
-        console.error("Error signing out: ", error);
-      });
-  });
+  // Check if user is signed in
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      // Check if this user has already been counted
+      const userRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(userRef);
 
-  // Redirect unauthenticated users
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      window.location.href = "signup.html"; // Redirect if not logged in
-    }
-  });
-
-  // Firestore reference for the view count document
-  const viewCountDoc = doc(db, "siteData", "viewCount");
-
-  // Function to get and update the view count
-  async function updateViewCount() {
-    try {
-      const docSnapshot = await getDoc(viewCountDoc);
-      if (docSnapshot.exists()) {
-        // Update the view count by incrementing it
-        await updateDoc(viewCountDoc, {
-          views: increment(1)
-        });
+      if (docSnap.exists()) {
+        // User has been counted already
+        console.log("User already counted.");
       } else {
-        // If no document exists, create one and set the views to 1
-        await updateDoc(viewCountDoc, {
-          views: 1
+        // User hasn't been counted yet, increment view count
+        const viewCountRef = doc(db, "siteData", "viewCount");
+        await updateDoc(viewCountRef, {
+          views: increment(1)  // Increment the global view count
         });
+
+        // Mark this user as counted
+        await setDoc(userRef, {
+          viewed: true
+        });
+
+        console.log("User counted and view count incremented.");
       }
-
-      // Retrieve and display the updated view count
-      const updatedDocSnapshot = await getDoc(viewCountDoc);
-      const data = updatedDocSnapshot.data();
-      document.getElementById("viewCounter").textContent = `👁️ ${data.views} views`;
-    } catch (error) {
-      console.error("Error updating view count: ", error);
+    } else {
+      // Redirect to login if user is not authenticated
+      window.location.href = "login.html";
     }
-  }
-
-  // Call the updateViewCount function on page load
-  updateViewCount();
+  });
 </script>
-
-</body>
-</html>
