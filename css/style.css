@@ -191,4 +191,6 @@ input[type="text"] {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  margin: 0;
+  padding: 0;
 }
